@@ -1,14 +1,9 @@
-import { useState } from 'react'
-
+import { useState } from "react";
 
 function SalesManager() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
-  return (
-    <>
-Sales Report
-    </>
-  )
+  return <>Sales Report</>;
 }
 
-export default SalesManager
+export default SalesManager;

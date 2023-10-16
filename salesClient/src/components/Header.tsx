@@ -1,25 +1,41 @@
-import { useState } from 'react'
+import styled from "styled-components";
+import { Colors } from "../styles/defaultProps";
+import SideMenu from "./SideMenu";
+import { IoMdMenu } from "react-icons/io";
 
-import styled from 'styled-components'
+export const HeaderBox = styled.header`
+  background-color: ${Colors.regularColor};
+  padding: 1rem 2rem;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  font-weight: 400;
+`;
 
+export const HamburguerMenuIcon = styled.div`
+  width: 2rem;
+  height: 2rem;
+`;
 
-const HeaderBox = styled.div`
+export const MenuBox = styled.div`
+  background-color: ${Colors.secondBackround};
+  height: 100%;
+`;
 
-padding: 1rem;
-background-color: #f5f6fa;
-border:2px solid red; 
-font-size: 2rem; 
-`
+export const MenuItens = styled.div`
+  background-color: ${Colors.secondBackround};
+  height: 100%;
+`;
 
-
-function Header() {
-
-
+export default function Header() {
   return (
-    <HeaderBox>
-      Header
-    </HeaderBox>
-  )
+    <>
+      <HeaderBox>
+        <HamburguerMenuIcon>
+          <IoMdMenu />
+        </HamburguerMenuIcon>
+        <div>Logo</div> Page name here
+      </HeaderBox>
+      {/* <SideMenu /> */}
+    </>
+  );
 }
-
-export default Header

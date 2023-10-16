@@ -1,17 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Header from './components/Header'
+import { useState } from "react";
+import "./App.css";
+import Header from "./components/Header";
+import Sales from "./pages/Sales";
+import SalesManager from "./pages/SaleManager";
+import SalesReport from "./pages/SalesReport";
+import { Board, InfoArea } from "./styles/generalStyles";
+import GlobalStyle from "./styles/globalStyles";
+import SideMenu from "./components/SideMenu";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [page, setPage] = useState(1);
+
+  const RenderPage = () => {
+    switch (page) {
+      case 0:
+        return <Sales />;
+      case 1:
+        return <SalesManager />;
+      case 2:
+        return <SalesReport />;
+      default:
+        return <Sales />;
+    }
+  };
 
   return (
     <>
-     <Header/>
+      <Header />
+      <>
+        <GlobalStyle />
+        <Board>
+          <InfoArea>
+            {" "}
+            <RenderPage />
+          </InfoArea>
+        </Board>
+      </>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

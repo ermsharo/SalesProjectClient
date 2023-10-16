@@ -1,15 +1,15 @@
-import { useState } from 'react'
-
+import { useState } from "react";
+import SalesListView from "../components/SalesListView";
 
 function Sales() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-
-Sales list
+      <div>
+        <h1>Vendas Realizadas</h1>
+        <SalesListView />
+      </div>
     </>
-  )
+  );
 }
 
-export default Sales
+export default Sales;
