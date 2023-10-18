@@ -17,7 +17,7 @@ export const Box = styled.div`
 `;
 
 export const Input = styled.input`
-  font-family: ${Fonts.primaryFont}
+  font-family: ${Fonts.primaryFont};
 
   font-size: 1.2rem;
   border-radius: 0.2rem;
@@ -40,7 +40,7 @@ export const Input = styled.input`
 `;
 
 export const RegularInput = styled.input`
-  font-family: ${Fonts.primaryFont}
+  font-family: ${Fonts.primaryFont};
   color: #333;
   font-size: 1rem;
   border-radius: 0.2rem;
@@ -59,7 +59,32 @@ export const RegularInput = styled.input`
     font-family: ${Fonts.primaryFont}
   }
   &:focus{
-    outline: 0.2rem solid  ${Colors.hooverColor};
+
+    outline-style: dashed;
+  }
+`;
+
+export const SelectInput = styled.select`
+  font-family: ${Fonts.primaryFont};
+  color: #333;
+  font-size: 1rem;
+  border-radius: 0.2rem;
+  border: 0;
+  box-sizing: border-box;
+
+  width: calc(100%);
+
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  margin-bottom: 16px;
+  background-color: ${Colors.thirthBackground};
+  color: ${Colors.primaryfontColor};
+  &::placeholder {
+    color: ${Colors.hooverColor};
+    font-family: ${Fonts.primaryFont}
+  }
+  &:focus{
+    /* outline: 0.2rem solid  ${Colors.hooverColor}; */
     outline-style: dashed;
   }
 `;
@@ -86,7 +111,7 @@ export const Button = styled.button`
   height: 3rem;
   margin: auto;
   background-color: ${Colors.regularColor};
-  margin-bottom: 2rem;
+ 
   &:hover {
     background-color: ${Colors.hooverColor};
   }

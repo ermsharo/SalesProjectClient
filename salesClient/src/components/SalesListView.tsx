@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FaEdit, FaTrash, FaSave } from "react-icons/fa";
 import { Colors } from "../styles/defaultProps";
 import { useState } from "react";
-import { EditInput } from "../styles/generalStyles";
+import { SelectInput } from "../styles/generalStyles";
 
 export const TH = styled.th`
   padding: 0.5rem;

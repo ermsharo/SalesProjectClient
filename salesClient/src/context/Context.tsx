@@ -44,7 +44,12 @@ export const MyContextProvider: React.FC<MyContextProviderProps> = ({
   //Requisição dos posts aqui
 
   // trunk-ignore(eslint/@typescript-eslint/no-explicit-any)
-  const { data: productData, error: productError, isLoading : productIsLoading, refetchData: productRefetchData } = GetData<any>({
+  const {
+    data: productData,
+    error: productError,
+    isLoading: productIsLoading,
+    refetchData: productRefetchData,
+  } = GetData<any>({
     url: `http://127.0.0.1:8000/api/product/`,
   });
 
