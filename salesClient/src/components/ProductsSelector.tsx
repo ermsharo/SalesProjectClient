@@ -3,44 +3,47 @@ import { SelectInput } from "../styles/generalStyles";
 import styled from "styled-components";
 import { useMyContext } from "../context/Context";
 
+const InputBox = styled.div`
+display: flex;
+flex-direction: column;
+`;
+
+
 function SalesManager() {
-  const InputBox = styled.div`
-    display: flex;
-    flex-direction: column;
-  `;
 
-  const FormBox = styled.div`
-    display: grid;
-    grid-template-columns: 3fr 1fr 1fr;
-    grid-column-gap: 1.5rem;
-  `;
-
-  const { productData ,productError ,productIsLoading} = useMyContext();
-
-
+  const { productData, productIsLoading, setActualProductObj } = useMyContext();
 
   const [selectedProduct, setSelectedProduct] = useState("");
-  const colorOptions = ["Red", "Green", "Blue", "Yellow"];
-  const handleProductChange = (event: { target: { value: any } }) => {
-    setSelectedProduct(event.target.value);
-  };
 
+  if (productIsLoading) {
+    return <div>Loading...</div>;
+  }
+  if (productData) {
 
+    const getObjectById = (objs: any[], id: string): any | undefined =>{
+      return objs.find(obj => obj.id.toString() === id);
+    }
 
-   if(productIsLoading){
-    return(<div>Loading...</div>)
-   }
-   if(productData){
-
-    console.log("Product Data", productData)
+    const handleProductChange = (event: { target: { value: string } }) => {
+      setSelectedProduct(event.target.value);
+      console.log("Selected Product ID:", event.target.value);
+      // Ensure productData is defined and has the expected structure
+      console.log("Product Data:", productData);
+      let id = event.target.value;
+      console.log("Type of ID:", typeof id);
+      // Check if the getObjectById function works as expected
+      const product = getObjectById(productData, id);
+      console.log("Product filtered:", product);
+      setActualProductObj(product)
+    };
     return (
       <>
         <InputBox>
           <label>Buscar pelo código de barras ou descrição</label>
           <SelectInput value={selectedProduct} onChange={handleProductChange}>
             <option value="">Selecione seu produto</option>
-            {productData.map((product: any, index: Key | null | undefined) => (
-              <option key={product.id} value={product.name}>
+            {productData.map((product: any) => (
+              <option key={product.id} value={product.id}>
                 {product.id} - {product.name}
               </option>
             ))}
@@ -48,9 +51,7 @@ function SalesManager() {
         </InputBox>
       </>
     );
-   }
-
-
+  }
 }
 
 export default SalesManager;

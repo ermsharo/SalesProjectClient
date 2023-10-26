@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 import { AxiosError } from "axios";
 import { GetData } from "../services/requests";
 
@@ -11,8 +17,14 @@ import { GetData } from "../services/requests";
 //EasyApply
 //Actual_ID
 
+interface Product{
+  id: string; 
+  name: string; 
+  quantity: number; 
+}
+
 interface MyContextType {
-  product: number;
+  product: Product;
   setProduct: React.Dispatch<React.SetStateAction<number>>;
   productCount: number;
   setProductCount: React.Dispatch<React.SetStateAction<number>>;
@@ -20,7 +32,10 @@ interface MyContextType {
   setClient: React.Dispatch<React.SetStateAction<number>>;
   seller: number;
   setSeller: React.Dispatch<React.SetStateAction<number>>;
-
+  actualSale: any | null;
+  setActualSale: React.Dispatch<React.SetStateAction<any>>;
+  actualProductObj: Product;
+  setActualProductObj: React.Dispatch<React.SetStateAction<Product | null>>;
   productData: any | null;
   productError: AxiosError | null;
   productIsLoading: boolean;
@@ -40,6 +55,8 @@ export const MyContextProvider: React.FC<MyContextProviderProps> = ({
   const [productCount, setProductCount] = useState<number>(0);
   const [client, setClient] = useState<number>(0); //client id
   const [seller, setSeller] = useState<number>(0); //seller id
+  const [actualProductObj, setActualProductObj] = useState<Product | null >(null);
+  const [actualSale, setActualSale] = useState<Product[]>([]); // starts empty
 
   //Requisição dos posts aqui
 
@@ -53,11 +70,17 @@ export const MyContextProvider: React.FC<MyContextProviderProps> = ({
     url: `http://127.0.0.1:8000/api/product/`,
   });
 
+  useEffect(() => {
+    console.log("Actual sale", actualSale);
+  }, [actualSale]);
+
   return (
     <MyContext.Provider
       value={{
         product,
         setProduct,
+        actualProductObj,
+        setActualProductObj,
         productCount,
         setProductCount,
         client,
@@ -68,6 +91,8 @@ export const MyContextProvider: React.FC<MyContextProviderProps> = ({
         productError,
         productIsLoading,
         productRefetchData,
+        actualSale,
+        setActualSale,
       }}
     >
       {children}

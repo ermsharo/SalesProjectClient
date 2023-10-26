@@ -31,10 +31,10 @@ export const Input = styled.input`
   color: ${Colors.primaryfontColor};
   &::placeholder {
     color: ${Colors.primaryfontColor};
-    font-family: ${Fonts.primaryFont}
+    font-family: ${Fonts.primaryFont};
   }
-  &:focus{
-    outline: 0.2rem solid  ${Colors.firstBackground};
+  &:focus {
+    outline: 0.2rem solid ${Colors.firstBackground};
     outline-style: dashed;
   }
 `;
@@ -56,10 +56,9 @@ export const RegularInput = styled.input`
   color: ${Colors.primaryfontColor};
   &::placeholder {
     color: ${Colors.hooverColor};
-    font-family: ${Fonts.primaryFont}
+    font-family: ${Fonts.primaryFont};
   }
-  &:focus{
-
+  &:focus {
     outline-style: dashed;
   }
 `;
@@ -81,9 +80,9 @@ export const SelectInput = styled.select`
   color: ${Colors.primaryfontColor};
   &::placeholder {
     color: ${Colors.hooverColor};
-    font-family: ${Fonts.primaryFont}
+    font-family: ${Fonts.primaryFont};
   }
-  &:focus{
+  &:focus {
     /* outline: 0.2rem solid  ${Colors.hooverColor}; */
     outline-style: dashed;
   }
@@ -99,19 +98,19 @@ export const Button = styled.button`
   background: none;
   color: inherit;
   border: none;
-  padding: 0;
+
   font: inherit;
   cursor: pointer;
   outline: inherit;
   border-radius: 1rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1.5rem;
   background-color: darkblue;
   color: white;
   width: calc(100%);
   height: 3rem;
   margin: auto;
   background-color: ${Colors.regularColor};
- 
+
   &:hover {
     background-color: ${Colors.hooverColor};
   }
@@ -121,7 +120,7 @@ export const Board = styled.div`
   margin: auto;
   padding: 2rem 0rem;
   height: 80vh;
-  width: 70vw;
+  width: 80vw;
   margin: auto;
 
   @media (max-width: ${BreakPoints.bpExtraLargeDevices}) {
